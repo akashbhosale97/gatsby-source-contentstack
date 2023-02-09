@@ -1,45 +1,30 @@
 'use strict';
 
 var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
-
 var _typeof = require("@babel/runtime/helpers/typeof");
-
 var _regenerator = _interopRequireDefault(require("@babel/runtime/regenerator"));
-
 var _defineProperty2 = _interopRequireDefault(require("@babel/runtime/helpers/defineProperty"));
-
 var _asyncToGenerator2 = _interopRequireDefault(require("@babel/runtime/helpers/asyncToGenerator"));
-
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
-
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); enumerableOnly && (symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; })), keys.push.apply(keys, symbols); } return keys; }
-
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = null != arguments[i] ? arguments[i] : {}; i % 2 ? ownKeys(Object(source), !0).forEach(function (key) { (0, _defineProperty2["default"])(target, key, source[key]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } return target; }
-
 var _require = require('gatsby/graphql'),
-    GraphQLInt = _require.GraphQLInt,
-    GraphQLJSON = _require.GraphQLJSON,
-    GraphQLString = _require.GraphQLString;
-
+  GraphQLInt = _require.GraphQLInt,
+  GraphQLJSON = _require.GraphQLJSON,
+  GraphQLString = _require.GraphQLString;
 var _require2 = require('./normalize'),
-    buildCustomSchema = _require2.buildCustomSchema,
-    extendSchemaWithDefaultEntryFields = _require2.extendSchemaWithDefaultEntryFields;
-
+  buildCustomSchema = _require2.buildCustomSchema,
+  extendSchemaWithDefaultEntryFields = _require2.extendSchemaWithDefaultEntryFields;
 var _require3 = require('./fetch'),
-    fetchContentTypes = _require3.fetchContentTypes;
-
+  fetchContentTypes = _require3.fetchContentTypes;
 var _require4 = require('./utils'),
-    getContentTypeOption = _require4.getContentTypeOption;
-
+  getContentTypeOption = _require4.getContentTypeOption;
 var _require5 = require('./gatsby-plugin-image'),
-    resolveGatsbyImageData = _require5.resolveGatsbyImageData;
-
+  resolveGatsbyImageData = _require5.resolveGatsbyImageData;
 exports.createSchemaCustomization = /*#__PURE__*/function () {
   var _ref = (0, _asyncToGenerator2["default"])( /*#__PURE__*/_regenerator["default"].mark(function _callee2(_ref2, configOptions) {
     var cache, actions, schema, reporter, createNodeId, contentTypes, typePrefix, disableMandatoryFields, jsonRteToHtml, contentTypeOption, references, groups, fileFields, jsonRteFields, createTypes, contentTypeSchema, assetTypeSchema, _yield$import, getGatsbyImageFieldConfig, fieldConfig;
-
     return _regenerator["default"].wrap(function _callee2$(_context2) {
       while (1) {
         switch (_context2.prev = _context2.next) {
@@ -52,32 +37,26 @@ exports.createSchemaCustomization = /*#__PURE__*/function () {
             contentTypeOption = getContentTypeOption(configOptions);
             _context2.next = 8;
             return fetchContentTypes(configOptions, contentTypeOption);
-
           case 8:
             contentTypes = _context2.sent;
             _context2.next = 11;
             return cache.set(typePrefix, contentTypes);
-
           case 11:
-            _context2.next = 16;
+            console.log(contentTypes);
+            _context2.next = 17;
             break;
-
-          case 13:
-            _context2.prev = 13;
+          case 14:
+            _context2.prev = 14;
             _context2.t0 = _context2["catch"](4);
             console.error('Contentstack fetch content type failed!');
-
-          case 16:
+          case 17:
             references = [], groups = [], fileFields = [], jsonRteFields = [];
-
             if (!configOptions.enableSchemaGeneration) {
-              _context2.next = 53;
+              _context2.next = 54;
               break;
             }
-
             createTypes = actions.createTypes;
             /** Type definition for content-type schema */
-
             contentTypeSchema = {
               name: "".concat(typePrefix, "ContentTypes"),
               fields: {
@@ -104,7 +83,6 @@ exports.createSchemaCustomization = /*#__PURE__*/function () {
               }
             };
             /** Type definition for asset schema */
-
             assetTypeSchema = {
               name: "".concat(typePrefix, "_assets"),
               fields: _objectSpread({
@@ -124,14 +102,12 @@ exports.createSchemaCustomization = /*#__PURE__*/function () {
                 infer: true
               }
             }; // Checks if gatsby-plugin-image is installed.
-
-            _context2.prev = 21;
-            _context2.next = 24;
+            _context2.prev = 22;
+            _context2.next = 25;
             return Promise.resolve().then(function () {
               return _interopRequireWildcard(require('gatsby-plugin-image/graphql-utils'));
             });
-
-          case 24:
+          case 25:
             _yield$import = _context2.sent;
             getGatsbyImageFieldConfig = _yield$import.getGatsbyImageFieldConfig;
             fieldConfig = {};
@@ -147,7 +123,6 @@ exports.createSchemaCustomization = /*#__PURE__*/function () {
                           cache: cache,
                           reporter: reporter
                         }));
-
                       case 1:
                       case "end":
                         return _context.stop();
@@ -155,7 +130,6 @@ exports.createSchemaCustomization = /*#__PURE__*/function () {
                   }
                 }, _callee);
               }));
-
               return function (_x3, _x4) {
                 return _ref3.apply(this, arguments);
               };
@@ -179,18 +153,15 @@ exports.createSchemaCustomization = /*#__PURE__*/function () {
             });
             fieldConfig.type = GraphQLJSON;
             assetTypeSchema.fields.gatsbyImageData = fieldConfig;
-            _context2.next = 35;
+            _context2.next = 36;
             break;
-
-          case 32:
-            _context2.prev = 32;
-            _context2.t1 = _context2["catch"](21);
-
+          case 33:
+            _context2.prev = 33;
+            _context2.t1 = _context2["catch"](22);
             if (_context2.t1.code === 'MODULE_NOT_FOUND') {
               reporter.info("Gatsby plugin image is required to use new gatsby image plugin's feature. Please check https://github.com/contentstack/gatsby-source-contentstack#the-new-gatsby-image-plugin for more help.");
             }
-
-          case 35:
+          case 36:
             createTypes([schema.buildObjectType(contentTypeSchema), schema.buildObjectType(assetTypeSchema)]);
             contentTypes && contentTypes.forEach(function (contentType) {
               var contentTypeUid = contentType.uid.replace(/-/g, '_');
@@ -213,38 +184,32 @@ exports.createSchemaCustomization = /*#__PURE__*/function () {
               createTypes(result.types);
             });
             _context2.t2 = Promise;
-            _context2.next = 40;
+            _context2.next = 41;
             return cache.set("".concat(typePrefix, "_").concat(configOptions.api_key, "_references"), references);
-
-          case 40:
+          case 41:
             _context2.t3 = _context2.sent;
-            _context2.next = 43;
+            _context2.next = 44;
             return cache.set("".concat(typePrefix, "_").concat(configOptions.api_key, "_groups"), groups);
-
-          case 43:
+          case 44:
             _context2.t4 = _context2.sent;
-            _context2.next = 46;
+            _context2.next = 47;
             return cache.set("".concat(typePrefix, "_").concat(configOptions.api_key, "_file_fields"), fileFields);
-
-          case 46:
+          case 47:
             _context2.t5 = _context2.sent;
-            _context2.next = 49;
+            _context2.next = 50;
             return cache.set("".concat(typePrefix, "_").concat(configOptions.api_key, "_json_rte_fields"), jsonRteFields);
-
-          case 49:
+          case 50:
             _context2.t6 = _context2.sent;
             _context2.t7 = [_context2.t3, _context2.t4, _context2.t5, _context2.t6];
-            _context2.next = 53;
+            _context2.next = 54;
             return _context2.t2.all.call(_context2.t2, _context2.t7);
-
-          case 53:
+          case 54:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[4, 13], [21, 32]]);
+    }, _callee2, null, [[4, 14], [22, 33]]);
   }));
-
   return function (_x, _x2) {
     return _ref.apply(this, arguments);
   };
