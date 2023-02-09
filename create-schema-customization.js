@@ -42,17 +42,18 @@ exports.createSchemaCustomization = /*#__PURE__*/function () {
             _context2.next = 11;
             return cache.set(typePrefix, contentTypes);
           case 11:
-            console.log(contentTypes);
-            _context2.next = 17;
+            console.log(contentTypes, 'content-types');
+            console.log(configOptions, 'configOptions');
+            _context2.next = 18;
             break;
-          case 14:
-            _context2.prev = 14;
+          case 15:
+            _context2.prev = 15;
             _context2.t0 = _context2["catch"](4);
             console.error('Contentstack fetch content type failed!');
-          case 17:
+          case 18:
             references = [], groups = [], fileFields = [], jsonRteFields = [];
             if (!configOptions.enableSchemaGeneration) {
-              _context2.next = 54;
+              _context2.next = 55;
               break;
             }
             createTypes = actions.createTypes;
@@ -102,12 +103,12 @@ exports.createSchemaCustomization = /*#__PURE__*/function () {
                 infer: true
               }
             }; // Checks if gatsby-plugin-image is installed.
-            _context2.prev = 22;
-            _context2.next = 25;
+            _context2.prev = 23;
+            _context2.next = 26;
             return Promise.resolve().then(function () {
               return _interopRequireWildcard(require('gatsby-plugin-image/graphql-utils'));
             });
-          case 25:
+          case 26:
             _yield$import = _context2.sent;
             getGatsbyImageFieldConfig = _yield$import.getGatsbyImageFieldConfig;
             fieldConfig = {};
@@ -153,15 +154,15 @@ exports.createSchemaCustomization = /*#__PURE__*/function () {
             });
             fieldConfig.type = GraphQLJSON;
             assetTypeSchema.fields.gatsbyImageData = fieldConfig;
-            _context2.next = 36;
+            _context2.next = 37;
             break;
-          case 33:
-            _context2.prev = 33;
-            _context2.t1 = _context2["catch"](22);
+          case 34:
+            _context2.prev = 34;
+            _context2.t1 = _context2["catch"](23);
             if (_context2.t1.code === 'MODULE_NOT_FOUND') {
               reporter.info("Gatsby plugin image is required to use new gatsby image plugin's feature. Please check https://github.com/contentstack/gatsby-source-contentstack#the-new-gatsby-image-plugin for more help.");
             }
-          case 36:
+          case 37:
             createTypes([schema.buildObjectType(contentTypeSchema), schema.buildObjectType(assetTypeSchema)]);
             contentTypes && contentTypes.forEach(function (contentType) {
               var contentTypeUid = contentType.uid.replace(/-/g, '_');
@@ -184,31 +185,31 @@ exports.createSchemaCustomization = /*#__PURE__*/function () {
               createTypes(result.types);
             });
             _context2.t2 = Promise;
-            _context2.next = 41;
+            _context2.next = 42;
             return cache.set("".concat(typePrefix, "_").concat(configOptions.api_key, "_references"), references);
-          case 41:
+          case 42:
             _context2.t3 = _context2.sent;
-            _context2.next = 44;
+            _context2.next = 45;
             return cache.set("".concat(typePrefix, "_").concat(configOptions.api_key, "_groups"), groups);
-          case 44:
+          case 45:
             _context2.t4 = _context2.sent;
-            _context2.next = 47;
+            _context2.next = 48;
             return cache.set("".concat(typePrefix, "_").concat(configOptions.api_key, "_file_fields"), fileFields);
-          case 47:
+          case 48:
             _context2.t5 = _context2.sent;
-            _context2.next = 50;
+            _context2.next = 51;
             return cache.set("".concat(typePrefix, "_").concat(configOptions.api_key, "_json_rte_fields"), jsonRteFields);
-          case 50:
+          case 51:
             _context2.t6 = _context2.sent;
             _context2.t7 = [_context2.t3, _context2.t4, _context2.t5, _context2.t6];
-            _context2.next = 54;
+            _context2.next = 55;
             return _context2.t2.all.call(_context2.t2, _context2.t7);
-          case 54:
+          case 55:
           case "end":
             return _context2.stop();
         }
       }
-    }, _callee2, null, [[4, 14], [22, 33]]);
+    }, _callee2, null, [[4, 15], [23, 34]]);
   }));
   return function (_x, _x2) {
     return _ref.apply(this, arguments);

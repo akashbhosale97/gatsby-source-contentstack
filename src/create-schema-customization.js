@@ -24,7 +24,8 @@ exports.createSchemaCustomization = async (
     contentTypes = await fetchContentTypes(configOptions, contentTypeOption);
     // Caching content-types because we need to be able to support multiple stacks.
     await cache.set(typePrefix, contentTypes);
-    console.log(contentTypes);
+    console.log(contentTypes, 'content-types');
+    console.log(configOptions, 'configOptions');
   } catch (error) {
     console.error('Contentstack fetch content type failed!');
   }
